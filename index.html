@@ -558,10 +558,16 @@
 <!-- ── HEADER ──────────────────────────────────── -->
 <div class="header">
 
+  <div class="logo-wrap">
+    <img src="https://www.passedpawnpremier.com/1754328735759 -3-.png"
+         alt="Passed Pawn Premier Strategies"
+         onerror="this.style.display='none'">
+  </div>
+
   <!-- PHOTO — replace ♛ with your tongue-out photo -->
   <!-- <img src="your-photo.jpg" alt="Delsa Darline"> inside .photo-circle -->
   <div class="photo-circle">♛</div>
-  <p class="photo-note">Claim Your Crown!</p>
+  <p class="photo-note">(Replace with your photo)</p>
 
   <div class="ornament">
     <div class="ornament-line"></div>
@@ -680,73 +686,311 @@
         Just the truth about where your business stands.
       </p>
 
-      <form id="auditForm" onsubmit="handleSubmit(event)">
+      <div id="crmWebToEntityForm" class="zcwf_lblLeft crmWebToEntityForm">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" name="name"
-            placeholder="First and Last Name"
-            required autocomplete="name">
+        <style>
+          .wf_customMessageBox{
+            font-family: Georgia, serif !important;
+            color: var(--text-dark);
+            background: var(--cream-light);
+            box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+            border: 2px solid var(--gold);
+            border-radius: 0;
+            z-index: 11000;
+            min-width: 200px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            max-width: 90%;
+            word-break: break-word;
+          }
+          .wf_customCircle{
+            position: relative;
+            background-color: var(--gold);
+            border-radius: 100%;
+            width: 20px;
+            height: 20px;
+            flex: none;
+            margin-right: 10px;
+          }
+          .wf_customCheckMark{
+            box-sizing: unset !important;
+            position: absolute;
+            transform: rotate(45deg) translate(-50%, -50%);
+            left: 6px; top: 9px;
+            height: 8px; width: 3px;
+            border-bottom: 2px solid #000;
+            border-right: 2px solid #000;
+          }
+          .wf_customClose::after, .wf_customClose::before{
+            content: "";
+            display: block;
+            box-sizing: border-box;
+            position: absolute;
+            width: 12px; height: 1.5px;
+            background: #616E88;
+            transform: rotate(45deg);
+            border-radius: 5px;
+            top: 8px; left: 3px;
+          }
+          .wf_customClose::after{ transform: rotate(-45deg); }
+
+          #crmWebToEntityForm.zcwf_lblLeft {
+            width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            background: transparent !important;
+            max-width: 100% !important;
+            box-sizing: border-box;
+          }
+          #crmWebToEntityForm .zcwf_row { margin: 0 0 14px 0 !important; }
+          #crmWebToEntityForm .zcwf_col_lab {
+            width: 100% !important;
+            float: none !important;
+            padding: 0 0 6px 0 !important;
+            margin: 0 !important;
+            font-family: Helvetica, Arial, sans-serif !important;
+            font-size: 9px !important;
+            letter-spacing: 2px !important;
+            color: var(--gold-dark) !important;
+            font-weight: bold !important;
+            text-transform: uppercase !important;
+          }
+          #crmWebToEntityForm .zcwf_col_fld {
+            width: 100% !important;
+            float: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+          #crmWebToEntityForm .zcwf_col_fld input[type=text] {
+            width: 100% !important;
+            padding: 13px 14px !important;
+            background: var(--white) !important;
+            border: 1px solid var(--cream-mid) !important;
+            border-bottom: 2px solid var(--gold-light) !important;
+            border-radius: 0 !important;
+            color: var(--text-dark) !important;
+            font-family: Helvetica, Arial, sans-serif !important;
+            font-size: 15px !important;
+            float: none !important;
+            box-sizing: border-box !important;
+          }
+          #crmWebToEntityForm .zcwf_col_fld input[type=text]:focus {
+            border-bottom-color: var(--gold) !important;
+            background: var(--cream-light) !important;
+            outline: none !important;
+          }
+          #crmWebToEntityForm .zcwf_col_fld_slt {
+            width: 100% !important;
+            padding: 13px 14px !important;
+            background: var(--white) !important;
+            border: 1px solid var(--cream-mid) !important;
+            border-bottom: 2px solid var(--gold-light) !important;
+            border-radius: 0 !important;
+            color: var(--text-dark) !important;
+            font-family: Helvetica, Arial, sans-serif !important;
+            font-size: 14px !important;
+            -webkit-appearance: none !important;
+            box-sizing: border-box !important;
+            float: none !important;
+          }
+          #crmWebToEntityForm input[name=reset] { display: none !important; }
+          #crmWebToEntityForm .formsubmit.zcwf_button {
+            width: 100% !important;
+            padding: 18px !important;
+            background: var(--black) !important;
+            color: var(--gold) !important;
+            border: 2px solid var(--gold) !important;
+            border-radius: 0 !important;
+            font-family: Helvetica, Arial, sans-serif !important;
+            font-size: 15px !important;
+            font-weight: bold !important;
+            letter-spacing: 1.5px !important;
+            text-transform: uppercase !important;
+            cursor: pointer !important;
+            max-width: 100% !important;
+            overflow: visible !important;
+            white-space: normal !important;
+            margin-top: 8px !important;
+            box-shadow: none !important;
+          }
+          .zcwf_lblLeft.cpT_primaryBtn:hover,
+          #crmWebToEntityForm .formsubmit.zcwf_button:hover {
+            background: var(--gold) !important;
+            color: var(--black) !important;
+            box-shadow: none !important;
+          }
+        </style>
+
+        <div class="wf_customMessageBox" id="wf_splash" style="display:none">
+          <div class="wf_customCircle"><div class="wf_customCheckMark"></div></div>
+          <span id="wf_splash_info"></span>
         </div>
 
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email"
-            placeholder="you@yourbusiness.com"
-            required autocomplete="email">
-        </div>
+        <form id="webform6917299000003608001" name="WebToLeads6917299000003608001" accept-charset="UTF-8">
+          <input type="text" style="display:none;" name="xnQsjsdp" value="5cee51c49acb7397b168f68960370bae6675f8d4a8391f1982b7e1705c97fc7a">
+          <input type="hidden" name="zc_gad" id="zc_gad" value="">
+          <input type="text" style="display:none;" name="xmIwtLD" value="ea1f059aa11821dfbe779cf555a1d08192a26cb9fce52eb72ad1a94a4f392ce67f38e86cba24545fa93d984338ec533b">
+          <input type="text" style="display:none;" name="actionType" value="TGVhZHM=">
+          <input type="text" style="display:none;" name="returnURL" value="null">
+          <input type="text" style="display:none;" id="ldeskuid" name="ldeskuid">
+          <input type="text" style="display:none;" id="LDTuvid" name="LDTuvid">
 
-        <div class="form-group">
-          <label for="business">Business Name</label>
-          <input type="text" id="business" name="business"
-            placeholder="Your Business Name"
-            required autocomplete="organization">
-        </div>
+          <div class="zcwf_row">
+            <div class="zcwf_col_lab"><label for="First_Name">First Name <span style="color:red;">*</span></label></div>
+            <div class="zcwf_col_fld"><input type="text" id="First_Name" aria-required="true" name="First Name" maxlength="40" placeholder="First Name"></div>
+          </div>
+          <div class="zcwf_row">
+            <div class="zcwf_col_lab"><label for="Last_Name">Last Name <span style="color:red;">*</span></label></div>
+            <div class="zcwf_col_fld"><input type="text" id="Last_Name" aria-required="true" name="Last Name" maxlength="80" placeholder="Last Name"></div>
+          </div>
+          <div class="zcwf_row">
+            <div class="zcwf_col_lab"><label for="Email">Email <span style="color:red;">*</span></label></div>
+            <div class="zcwf_col_fld"><input type="text" ftype="email" autocomplete="false" id="Email" aria-required="true" name="Email" maxlength="100" placeholder="you@yourbusiness.com"></div>
+          </div>
+          <div class="zcwf_row">
+            <div class="zcwf_col_lab"><label for="Phone">Phone</label></div>
+            <div class="zcwf_col_fld"><input type="text" id="Phone" name="Phone" maxlength="30" placeholder="(352) 000-0000"></div>
+          </div>
+          <div class="zcwf_row">
+            <div class="zcwf_col_lab"><label for="Company">Business Name</label></div>
+            <div class="zcwf_col_fld"><input type="text" id="Company" name="Company" maxlength="200" placeholder="Your Business Name"></div>
+          </div>
+          <div class="zcwf_row">
+            <div class="zcwf_col_lab"><label for="Website">Website</label></div>
+            <div class="zcwf_col_fld"><input type="text" id="Website" name="Website" maxlength="255" placeholder="www.yourbusiness.com"></div>
+          </div>
+          <div class="zcwf_row">
+            <div class="zcwf_col_lab"><label for="Industry">Industry</label></div>
+            <div class="zcwf_col_fld">
+              <select class="zcwf_col_fld_slt" id="Industry" onChange="addAriaSelected6917299000003608001()" name="Industry">
+                <option value="-None-">Select Industry</option>
+                <option value="Agriculture&#x20;&amp;&#x20;Farming">Agriculture &amp; Farming</option>
+                <option value="Arts,&#x20;Entertainment&#x20;&amp;&#x20;Recreation">Arts, Entertainment &amp; Recreation</option>
+                <option value="Automotive">Automotive</option>
+                <option value="Construction&#x20;&amp;&#x20;Contracting">Construction &amp; Contracting</option>
+                <option value="Consulting&#x20;&amp;&#x20;Professional&#x20;Services">Consulting &amp; Professional Services</option>
+                <option value="Education&#x20;&amp;&#x20;Training">Education &amp; Training</option>
+                <option value="Financial&#x20;Services">Financial Services</option>
+                <option value="Food&#x20;&amp;&#x20;Beverage">Food &amp; Beverage</option>
+                <option value="Home&#x20;Services">Home Services</option>
+                <option value="Hospitality&#x20;&amp;&#x20;Tourism">Hospitality &amp; Tourism</option>
+                <option value="Information&#x20;Technology">Information Technology</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Legal&#x20;Services">Legal Services</option>
+                <option value="Medical&#x20;&amp;&#x20;Healthcare">Medical &amp; Healthcare</option>
+                <option value="Nonprofit&#x20;&amp;&#x20;Community&#x20;Organizations">Nonprofit &amp; Community Organizations</option>
+                <option value="Personal&#x20;Services">Personal Services</option>
+                <option value="Real&#x20;Estate">Real Estate</option>
+                <option value="Retail&#x20;&amp;&#x20;eCommerce">Retail &amp; eCommerce</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
 
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone"
-            placeholder="(352) 000-0000"
-            required autocomplete="tel">
-        </div>
+          <input type="text" style="display:none;" name="aG9uZXlwb3Q" value="">
 
-        <div class="form-group">
-          <label for="industry">Industry</label>
-          <select id="industry" name="industry">
-            <option value="" disabled selected>Select your industry</option>
-            <option>Healthcare / Medical</option>
-            <option>Real Estate</option>
-            <option>Restaurant / Food Service</option>
-            <option>Retail</option>
-            <option>Professional Services</option>
-            <option>Nonprofit</option>
-            <option>Construction / Trades</option>
-            <option>Beauty / Wellness</option>
-            <option>Technology</option>
-            <option>Other</option>
-          </select>
-        </div>
+          <div class="zcwf_row">
+            <div class="zcwf_col_lab"></div>
+            <div class="zcwf_col_fld">
+              <input type="submit" id="formsubmit" role="button" class="formsubmit zcwf_button" value="CLAIM MY FREE AUDIT" aria-label="Submit" title="Submit">
+              <input type="reset" class="zcwf_button" name="reset" value="Reset" style="display:none;">
+            </div>
+          </div>
 
-        <button type="submit" class="btn-submit">
-          ♟ &nbsp; CLAIM MY FREE AUDIT
-        </button>
+          <p style="font-family:Helvetica,Arial,sans-serif;font-size:9px;color:#888;text-align:center;margin-top:12px;line-height:1.6;font-style:italic;">
+            I'll reach out within 24 hours. No spam. No sales pressure. Just honest intel.
+          </p>
 
-        <p class="form-note">
-         No spam. No sales pressure. Just honest intel.
-        </p>
+        </form>
 
-      </form>
+        <script>
+          function addAriaSelected6917299000003608001(){
+            var optionElem = event.target;
+            var prev = optionElem.querySelector("[aria-selected=true]");
+            if(prev){ prev.removeAttribute("aria-selected"); }
+            optionElem.querySelectorAll("option")[optionElem.selectedIndex].ariaSelected = "true";
+          }
+          function validateEmail6917299000003608001(){
+            var form = document.forms["WebToLeads6917299000003608001"];
+            var emailFld = form.querySelectorAll("[ftype=email]");
+            for(var i=0;i<emailFld.length;i++){
+              var emailVal = emailFld[i].value;
+              if((emailVal.replace(/^\s+|\s+$/g,"")).length!=0){
+                var atpos=emailVal.indexOf("@"); var dotpos=emailVal.lastIndexOf(".");
+                if(atpos<1||dotpos<atpos+2||dotpos+2>=emailVal.length){
+                  alert("Please enter a valid email address."); emailFld[i].focus(); return false;
+                }
+              }
+            }
+            return true;
+          }
+          function checkMandatory6917299000003608001(){
+            var mnd=["First Name","Last Name","Email"];
+            var lbl=["First Name","Last Name","Email"];
+            for(var i=0;i<mnd.length;i++){
+              var f=document.forms["WebToLeads6917299000003608001"][mnd[i]];
+              if(f&&((f.value).replace(/^\s+|\s+$/g,"")).length==0){
+                alert(lbl[i]+" cannot be empty."); f.focus(); return false;
+              }
+              try{ if(f&&f.name=="Last Name"){ name=f.value; } }catch(e){}
+            }
+            trackVisitor6917299000003608001();
+            if(!validateEmail6917299000003608001()){ return false; }
+            document.querySelector(".crmWebToEntityForm .formsubmit").setAttribute("disabled",true);
+            return true;
+          }
+          $(document).ready(function(){
+            $("#webform6917299000003608001").submit(function(e){
+              var ok=checkMandatory6917299000003608001();
+              e.preventDefault();
+              if(ok){
+                var fd=new FormData(this);
+                $.ajax({
+                  url:"https://crm.zoho.com/crm/WebToLeadForm",
+                  type:"POST", data:fd, cache:false, contentType:false, processData:false,
+                  success:function(data){
+                    document.getElementById("wf_splash_info").innerText=data.actionvalue;
+                    document.getElementById("webform6917299000003608001").reset.click();
+                    var sp=document.getElementById("wf_splash");
+                    sp.style.display="";
+                    setTimeout(function(){ sp.style.display="none"; },5000);
+                    document.querySelector(".crmWebToEntityForm .formsubmit").removeAttribute("disabled");
+                  },
+                  error:function(){ alert("An error occurred. Please try again."); }
+                });
+              }
+            });
+          });
+        </script>
 
-      <!-- Success message -->
-      <div class="success-box" id="successBox">
-        <div class="success-crown">♛</div>
-        <h3>You're <span>In!</span></h3>
-        <p>
-          Your audit request has been received.<br><br>
-          I'll be in touch with an <strong>honest</strong> look at where your business stands
-          — and exactly what it would take to win.<br><br>
-          <em>— Delsa</em>
-        </p>
+        <script type="text/javascript" id="VisitorTracking">
+          var $zoho=$zoho||{};
+          $zoho.salesiq=$zoho.salesiq||{widgetcode:"siq81052359cbf02b0f33a6b7e59ae1ea8bde4fcd9bcbd1996ac0aefa2496509ff0",values:{},ready:function(){}};
+          var d=document; s=d.createElement("script"); s.type="text/javascript"; s.id="zsiqscript"; s.defer=true;
+          s.src="https://salesiq.zoho.com/widget"; t=d.getElementsByTagName("script")[0]; t.parentNode.insertBefore(s,t);
+          function trackVisitor6917299000003608001(){
+            try{
+              if($zoho){
+                var lu=document.forms["WebToLeads6917299000003608001"]["LDTuvid"];
+                if(lu){ lu.value=$zoho.salesiq.visitor.uniqueid(); }
+                var fn=document.forms["WebToLeads6917299000003608001"]["First Name"];
+                if(fn){ name=fn.value+" "+name; }
+                $zoho.salesiq.visitor.name(name);
+                var em=document.forms["WebToLeads6917299000003608001"]["Email"];
+                if(em){ $zoho.salesiq.visitor.email(em.value); }
+              }
+            }catch(e){}
+          }
+        </script>
+        <script id="wf_anal" src="https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=fa46e3fa19f88df2a02a448734c4c60defb037d45100cd76ee6570ddeacae919f1cf81e53bb4347f17fe2548a098f4f2gidae8baec5e07b3b3837a16f228862e4c6494d72e6c427de31dff18d7be4c4493agidbe1840882f08be8be6877cb97b42e1046fc7fb4002c266e5d69f2cd1b5d46948gid561a626f489da6141e090384da0a62fdd657976e053cab7f7fd07483571f99fb&tw=9e1d4bea0f3cdbfc0f22b1a7d8a26bd66a08e75256417c06967d651d6df77a81"></script>
+
       </div>
     </div>
 
