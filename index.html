@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Delsa Darline — Passed Pawn Premier Strategies. Business Development, Revenue Ops, Digital Marketing & AI Integrations.">
+<title>Connect with Delsa | Passed Pawn Premier Strategies</title>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:       #0D0D0D;
+    --brown:       #3D1A14;
+    --gold:        #C9A84C;
+    --gold-light:  #E2C97E;
+    --gold-dark:   #8B6914;
+    --cream:       #EDE5CE;
+    --cream-light: #F7F2E7;
+    --cream-mid:   #F0E8D5;
+    --white:       #FFFFFF;
+    --gray:        #888888;
+    --gray-light:  #CCCCCC;
+    --text-dark:   #1A1A1A;
+    --text-mid:    #3D3D3D;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--cream-light);
+    color: var(--text-dark);
+    min-height: 100vh;
+    max-width: 480px;
+    margin: 0 auto;
+    padding-bottom: 48px;
+  }
+
+  /* ── Chess board strip ──────────────────────── */
+  .chess-strip {
+    display: flex;
+    width: 100%;
+    height: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .chess-strip span {
+    flex: 1;
+    height: 10px;
+  }
+  .chess-strip.dark-cream span:nth-child(odd)  { background: var(--black); }
+  .chess-strip.dark-cream span:nth-child(even) { background: var(--cream); }
+  .chess-strip.gold-cream span:nth-child(odd)  { background: var(--gold); }
+  .chess-strip.gold-cream span:nth-child(even) { background: var(--cream-light); }
+  .chess-strip.gold-dark span:nth-child(odd)   { background: var(--gold); }
+  .chess-strip.gold-dark span:nth-child(even)  { background: var(--black); }
+
+  /* ── Dividers ────────────────────────────────── */
+  .gold-line    { width: 100%; height: 3px; background: var(--gold); display: block; }
+  .thin-line    { width: 100%; height: 1px; background: var(--gold-light); display: block; }
+  .cream-line   { width: 100%; height: 2px; background: var(--cream-mid); display: block; }
+
+  /* ── TOP BAR ─────────────────────────────────── */
+  .top-bar {
+    background: var(--black);
+    text-align: center;
+    padding: 7px 16px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    color: var(--gold);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  /* ── HEADER ──────────────────────────────────── */
+  .header {
+    background: var(--cream-light);
+    text-align: center;
+    padding: 28px 24px 24px;
+    position: relative;
+  }
+
+  .logo-wrap {
+    margin-bottom: 20px;
+  }
+  .logo-wrap img {
+    max-width: 210px;
+    height: auto;
+  }
+
+  /* Gold ornament line */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto 20px;
+  }
+  .ornament-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .ornament-line.right {
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+  .ornament-crown {
+    font-size: 18px;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  /* Photo */
+  .photo-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+  .photo-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    background: var(--cream-mid);
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    color: var(--gold-dark);
+    box-shadow: 0 4px 20px rgba(201,168,76,0.25);
+  }
+  .photo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .photo-note {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 8px;
+    color: var(--gold-dark);
+    font-style: italic;
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  .header h1 {
+    font-size: 30px;
+    color: var(--text-dark);
+    font-style: italic;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .header h1 span { color: var(--gold-dark); }
+
+  .header .title-tag {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    color: var(--brown);
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .tagline-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .tag-pill {
+    background: var(--cream-mid);
+    border: 1px solid var(--gold);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9px;
+    color: var(--text-dark);
+    padding: 4px 10px;
+    letter-spacing: 0.3px;
+  }
+
+  .tough-love-bar {
+    background: var(--black);
+    color: var(--gold);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    display: inline-block;
+    margin-top: 2px;
+  }
+
+  /* ── STEP SECTIONS ───────────────────────────── */
+  .step-section {
+    background: var(--cream-light);
+    padding: 24px 20px;
+    border-bottom: 1px solid var(--cream-mid);
+  }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .step-badge {
+    width: 32px;
+    height: 32px;
+    background: var(--black);
+    color: var(--gold);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid var(--gold);
+  }
+
+  .step-title {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    color: var(--gold-dark);
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  /* ── BUTTONS ──────────────────────────────────── */
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 10px;
+    transition: opacity 0.2s, transform 0.1s;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.3;
+  }
+  .btn:active { transform: scale(0.98); opacity: 0.88; }
+  .btn:last-child { margin-bottom: 0; }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    box-shadow: 0 2px 12px rgba(201,168,76,0.3);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--black);
+    border: 2px solid var(--gold);
+  }
+
+  .btn-dark {
+    background: var(--black);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+  }
+
+  .btn-sub {
+    display: block;
+    font-size: 10px;
+    font-weight: normal;
+    opacity: 0.7;
+    margin-top: 3px;
+    letter-spacing: 0;
+    font-style: italic;
+  }
+
+  /* Social pair */
+  .social-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .btn-fb {
+    background: #1877F2;
+    color: var(--white);
+    font-size: 13px;
+    padding: 14px 10px;
+    border: none;
+  }
+  .btn-li {
+    background: #0A66C2;
+    color: var(--white);
+    font-size: 13px;
+    padding: 14px 10px;
+    border: none;
+  }
+
+  .social-note {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    color: var(--gray);
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* ── AUDIT SECTION ────────────────────────────── */
+  .audit-section {
+    background: var(--cream-mid);
+    padding: 0;
+  }
+
+  .audit-header-bar {
+    background: var(--black);
+    padding: 18px 20px;
+    text-align: center;
+  }
+  .audit-header-bar h2 {
+    font-size: 20px;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .audit-header-bar h2 span { color: var(--gold); font-style: italic; }
+  .audit-header-bar p {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    color: var(--cream);
+    letter-spacing: 0.3px;
+  }
+
+  .audit-body {
+    padding: 22px 20px;
+  }
+
+  /* What you get list */
+  .audit-includes {
+    margin-bottom: 20px;
+  }
+  .audit-includes-title {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    color: var(--gold-dark);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .audit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--cream-light);
+  }
+  .audit-item:last-child { border-bottom: none; }
+  .audit-check {
+    width: 20px;
+    height: 20px;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  .audit-item-text {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: var(--text-dark);
+    line-height: 1.4;
+  }
+
+  /* Form */
+  .form-wrap {
+    background: var(--cream-light);
+    border: 1px solid var(--gold);
+    padding: 20px 16px;
+  }
+
+  .form-intro {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    color: var(--text-mid);
+    text-align: center;
+    margin-bottom: 18px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+  .form-group label {
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold-dark);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 13px 14px;
+    background: var(--white);
+    border: 1px solid var(--cream-mid);
+    border-bottom: 2px solid var(--gold-light);
+    color: var(--text-dark);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  .form-group input:focus,
+  .form-group select:focus {
+    border-bottom-color: var(--gold);
+    background: var(--cream-light);
+  }
+  .form-group input::placeholder {
+    color: var(--gray-light);
+    font-size: 13px;
+    font-style: italic;
+  }
+  .form-group select {
+    color: var(--text-dark);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C9A84C' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  .btn-submit {
+    background: var(--black);
+    color: var(--gold);
+    font-size: 15px;
+    padding: 18px;
+    width: 100%;
+    border: 2px solid var(--gold);
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 8px;
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-submit:active {
+    transform: scale(0.98);
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  .form-note {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9px;
+    color: var(--gray);
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ── SUCCESS STATE ────────────────────────────── */
+  .success-box {
+    display: none;
+    background: var(--cream-light);
+    border: 2px solid var(--gold);
+    padding: 28px 20px;
+    text-align: center;
+    margin-top: 12px;
+  }
+  .success-box.show { display: block; }
+  .success-box .success-crown {
+    font-size: 36px;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .success-box h3 {
+    font-size: 22px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+  .success-box h3 span { color: var(--gold-dark); font-style: italic; }
+  .success-box p {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ───────────────────────────────────── */
+  .footer {
+    background: var(--black);
+    text-align: center;
+    padding: 24px 20px 32px;
+  }
+  .footer-logo {
+    max-width: 160px;
+    height: auto;
+    margin-bottom: 16px;
+    opacity: 0.9;
+  }
+  .footer a {
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    color: var(--gold-light);
+    text-decoration: none;
+    margin-bottom: 7px;
+    letter-spacing: 0.3px;
+  }
+  .footer-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin: 14px auto;
+  }
+  .footer .copyright {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 8px;
+    color: var(--gray);
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">Exclusively for Small to Mid-Size Businesses</div>
+<div class="gold-line"></div>
+<div class="chess-strip dark-cream">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<!-- ── HEADER ──────────────────────────────────── -->
+<div class="header">
+
+  <div class="logo-wrap">
+    <img src="https://www.passedpawnpremier.com/1754328735759 -3-.png"
+         alt="Passed Pawn Premier Strategies"
+         onerror="this.style.display='none'">
+  </div>
+
+  <!-- PHOTO — replace ♛ with your tongue-out photo -->
+  <!-- <img src="your-photo.jpg" alt="Delsa Darline"> inside .photo-circle -->
+  <div class="photo-circle">♛</div>
+  <p class="photo-note">(Replace with your photo)</p>
+
+  <div class="ornament">
+    <div class="ornament-line"></div>
+    <div class="ornament-crown">♛</div>
+    <div class="ornament-line right"></div>
+  </div>
+
+  <h1><span>Delsa</span> Darline</h1>
+  <p class="title-tag">
+    Fractional Head of Revenue Operations &amp; AI Systems
+  </p>
+
+  <div class="tagline-row">
+    <span class="tag-pill">Business Development</span>
+    <span class="tag-pill">Revenue Ops</span>
+    <span class="tag-pill">Digital Marketing</span>
+    <span class="tag-pill">AI Integrations</span>
+  </div>
+
+  <span class="tough-love">No Fluff &nbsp;·&nbsp; Tough Love &nbsp;·&nbsp; Real Results</span>
+
+</div>
+
+<div class="chess-strip gold-cream">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+<div class="gold-line"></div>
+
+<!-- ── STEP 1: SAVE CONTACT ─────────────────────── -->
+<div class="step-section">
+  <div class="step-header">
+    <div class="step-badge">1</div>
+    <span class="step-title">Save My Contact</span>
+  </div>
+
+  <a class="btn btn-primary"
+     href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3ADelsa%20Darline%0AORG%3APassed%20Pawn%20Premier%20Strategies%0ATITLE%3AFractional%20Head%20of%20Revenue%20Operations%20and%20AI%20Systems%0ATEL%3BTYPE%3DCELL%2CVOICE%2CTEXT%3A%2B13528399036%0AEMAIL%3BTYPE%3DWORK%3ADelsaDarline%40PassedPawnPremier.com%0AURL%3Ahttps%3A%2F%2Fwww.passedpawnpremier.com%0AADр%3BTYPE%3DWORK%3A%3B%3BNationwide%3B%3B%3BFL%3BUSA%0ANOTE%3ABusiness%20Development%20%7C%20Revenue%20Ops%20%7C%20Digital%20Marketing%20%7C%20AI%20Integrations.%20No%20Fluff.%20Tough%20Love.%20Real%20Results.%0AEND%3AVCARD"
+     download="Delsa_Darline.vcf"
+     id="vcardBtn">
+    ♟ &nbsp; SAVE MY CONTACT INFO
+    <span class="btn-sub">Tap to add Delsa directly to your contacts</span>
+  </a>
+</div>
+
+<div class="thin-line"></div>
+
+<!-- ── STEP 2: FOLLOW ────────────────────────────── -->
+<div class="step-section">
+  <div class="step-header">
+    <div class="step-badge">2</div>
+    <span class="step-title">Follow Me</span>
+  </div>
+
+  <div class="social-pair">
+    <a class="btn btn-fb"
+       href="https://www.facebook.com/DelsaDarline"
+       target="_blank" rel="noopener">
+      <strong>f</strong>&nbsp; Facebook
+    </a>
+    <a class="btn btn-li"
+       href="https://www.linkedin.com/in/delsa-darline-8a268291/"
+       target="_blank" rel="noopener">
+      <strong>in</strong>&nbsp; LinkedIn
+    </a>
+  </div>
+
+  <p class="social-note">Weekly business tips &amp; AI insights</p>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ── STEP 3: FREE AUDIT ─────────────────────────── -->
+<div class="audit-section">
+
+  <div class="audit-header-bar">
+    <h2>Claim Your <span>Free</span><br>Business Audit</h2>
+    <p>♟ &nbsp; Your One Move Towards Success</p>
+  </div>
+
+  <div class="audit-body">
+
+    <div class="audit-includes">
+      <p class="audit-includes-title">What You Get</p>
+      <div class="audit-item">
+        <div class="audit-check">✓</div>
+        <p class="audit-item-text">Full Web Presence Review</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-check">✓</div>
+        <p class="audit-item-text">Google Business Profile Audit</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-check">✓</div>
+        <p class="audit-item-text">Visibility &amp; Gap Analysis</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-check">✓</div>
+        <p class="audit-item-text">Competitor Landscape Overview</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-check">✓</div>
+        <p class="audit-item-text">Personalized Action Roadmap</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-check">✓</div>
+        <p class="audit-item-text">Honest Assessment — No Sugar Coating</p>
+      </div>
+    </div>
+
+    <div class="form-wrap">
+      <p class="form-intro">
+        No pitch. No pressure.<br>
+        Just the truth about where your business stands.
+      </p>
+
+      <form id="auditForm" onsubmit="handleSubmit(event)">
+
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name"
+            placeholder="First and Last Name"
+            required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email"
+            placeholder="you@yourbusiness.com"
+            required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label for="business">Business Name</label>
+          <input type="text" id="business" name="business"
+            placeholder="Your Business Name"
+            required autocomplete="organization">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone"
+            placeholder="(352) 000-0000"
+            required autocomplete="tel">
+        </div>
+
+        <div class="form-group">
+          <label for="industry">Industry</label>
+          <select id="industry" name="industry">
+            <option value="" disabled selected>Select your industry</option>
+            <option>Healthcare / Medical</option>
+            <option>Real Estate</option>
+            <option>Restaurant / Food Service</option>
+            <option>Retail</option>
+            <option>Professional Services</option>
+            <option>Nonprofit</option>
+            <option>Construction / Trades</option>
+            <option>Beauty / Wellness</option>
+            <option>Technology</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          ♟ &nbsp; CLAIM MY FREE AUDIT
+        </button>
+
+        <p class="form-note">
+          I'll reach out within 24 hours.<br>
+          No spam. No sales pressure. Just honest intel.
+        </p>
+
+      </form>
+
+      <!-- Success message -->
+      <div class="success-box" id="successBox">
+        <div class="success-crown">♛</div>
+        <h3>You're <span>In!</span></h3>
+        <p>
+          Your audit request has been received.<br><br>
+          I'll be in touch within <strong>24 hours</strong>
+          with an honest look at where your business stands
+          — and exactly what it would take to win.<br><br>
+          <em>— Delsa</em>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── DIVIDER ───────────────────────────────────── -->
+<div class="gold-line"></div>
+<div class="chess-strip dark-cream">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────── -->
+<div class="footer">
+  <img class="footer-logo"
+       src="https://www.passedpawnpremier.com/1754328735759 -3-.png"
+       alt="Passed Pawn Premier Strategies"
+       onerror="this.style.display='none'">
+  <div class="footer-divider"></div>
+  <a href="https://www.passedpawnpremier.com" target="_blank" rel="noopener">
+    www.PassedPawnPremier.com
+  </a>
+  <a href="tel:+13528399036">352-839-9036 &nbsp;(Call or Text)</a>
+  <a href="mailto:DelsaDarline@PassedPawnPremier.com">
+    DelsaDarline@PassedPawnPremier.com
+  </a>
+  <div class="footer-divider"></div>
+  <p class="copyright">
+    &copy; 2025 Passed Pawn Premier Strategies. All Rights Reserved.<br>
+    Lake, Sumter &amp; Marion County — Nationwide
+  </p>
+</div>
+
+<script>
+// ── Form submission ────────────────────────────────
+function handleSubmit(e) {
+  e.preventDefault();
+
+  const name  = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const biz   = document.getElementById('business').value;
+  const phone = document.getElementById('phone').value;
+  const ind   = document.getElementById('industry').value;
+
+  const subject = encodeURIComponent(`Free Audit Request — ${biz}`);
+  const body = encodeURIComponent(
+    `NEW AUDIT REQUEST\n\n` +
+    `Name: ${name}\n` +
+    `Email: ${email}\n` +
+    `Business: ${biz}\n` +
+    `Phone: ${phone}\n` +
+    `Industry: ${ind}\n\n` +
+    `Submitted from: NFC Landing Page\n` +
+    `passedpawnpremier.com/connect`
+  );
+
+  window.location.href =
+    `mailto:DelsaDarline@PassedPawnPremier.com?subject=${subject}&body=${body}`;
+
+  document.getElementById('auditForm').style.display = 'none';
+  const success = document.getElementById('successBox');
+  success.classList.add('show');
+  success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ── vCard — iOS fallback ───────────────────────────
+document.getElementById('vcardBtn').addEventListener('click', function(e) {
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  if (isIOS) {
+    e.preventDefault();
+    const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Delsa Darline\nORG:Passed Pawn Premier Strategies\nTITLE:Fractional Head of Revenue Operations and AI Systems\nTEL;TYPE=CELL,VOICE,TEXT:+13528399036\nEMAIL;TYPE=WORK:DelsaDarline@PassedPawnPremier.com\nURL:https://www.passedpawnpremier.com\nNOTE:Business Development | Revenue Ops | Digital Marketing | AI Integrations. No Fluff. Tough Love. Real Results.\nEND:VCARD`;
+    const blob = new Blob([vcard], { type: 'text/vcard' });
+    window.open(URL.createObjectURL(blob), '_blank');
+  }
+});
+</script>
+
+</body>
+</html>
