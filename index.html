@@ -290,20 +290,19 @@
     margin-bottom: 10px;
   }
 
-  .btn-fb {
-    background: #1877F2;
-    color: var(--white);
+  .btn-fb, .btn-li {
     font-size: 13px;
-    padding: 14px 10px;
+    padding: 0 10px;
     border: none;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
   }
-  .btn-li {
-    background: #0A66C2;
-    color: var(--white);
-    font-size: 13px;
-    padding: 14px 10px;
-    border: none;
-  }
+  .btn-fb { background: #1877F2; color: var(--white); }
+  .btn-li { background: #0A66C2; color: var(--white); }
 
   .social-note {
     font-family: Helvetica, Arial, sans-serif;
@@ -559,16 +558,10 @@
 <!-- ── HEADER ──────────────────────────────────── -->
 <div class="header">
 
-  <div class="logo-wrap">
-    <img src="https://www.passedpawnpremier.com/1754328735759 -3-.png"
-         alt="Passed Pawn Premier Strategies"
-         onerror="this.style.display='none'">
-  </div>
-
   <!-- PHOTO — replace ♛ with your tongue-out photo -->
   <!-- <img src="your-photo.jpg" alt="Delsa Darline"> inside .photo-circle -->
   <div class="photo-circle">♛</div>
-  <p class="photo-note">(Replace with your photo)</p>
+  <p class="photo-note">Claim Your Crown!</p>
 
   <div class="ornament">
     <div class="ornament-line"></div>
@@ -739,8 +732,7 @@
         </button>
 
         <p class="form-note">
-          I'll reach out within 24 hours.<br>
-          No spam. No sales pressure. Just honest intel.
+         No spam. No sales pressure. Just honest intel.
         </p>
 
       </form>
@@ -751,8 +743,7 @@
         <h3>You're <span>In!</span></h3>
         <p>
           Your audit request has been received.<br><br>
-          I'll be in touch within <strong>24 hours</strong>
-          with an honest look at where your business stands
+          I'll be in touch with an <strong>honest</strong> look at where your business stands
           — and exactly what it would take to win.<br><br>
           <em>— Delsa</em>
         </p>
